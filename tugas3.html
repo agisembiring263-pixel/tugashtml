@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Sederhana</title>
+</head>
+<body>
+  <h2>Kalkulator Sederhana</h2>
+  <table>
+    <tr>
+      <td>Input Bilangan 1</td>
+      <td><input type="number" id="bill" required></td>
+    </tr>
+    <tr>
+      <td>Input Bilangan 2</td>
+      <td><input type="number" id="bill2" required></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button onclick="hitung('+')">+</button>
+        <button onclick="hitung('-')">-</button>
+        <button onclick="hitung('*')">*</button>
+        <button onclick="hitung('/')">/</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Output:</td>
+      <td><input type="text" id="hasil" disabled></td>
+    </tr>
+  </table>
+
+  <script>
+    function hitung(operasi) {
+      const bil1 = parseFloat(document.getElementById("bill").value);
+      const bil2 = parseFloat(document.getElementById("bill2").value);
+      let hasil;
+
+      if (isNaN(bil1) || isNaN(bil2)) {
+        hasil = "Masukkan angka yang valid";
+      } else {
+        switch (operasi) {
+          case '+':
+            hasil = bil1 + bil2;
+            break;
+          case '-':
+            hasil = bil1 - bil2;
+            break;
+          case '*':
+            hasil = bil1 * bil2;
+            break;
+          case '/':
+            hasil = bil2 !== 0 ? bil1 / bil2 : "Error: pembagi nol";
+            break;
+          default:
+            hasil = "Operasi tidak dikenali";
+        }
+      }
+
+      document.getElementById("hasil").value = hasil;
+    }
+  </script>
+</body>
+</html>
